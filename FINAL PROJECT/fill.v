@@ -95,9 +95,9 @@ module datapath(input clk, plot_en, resetn, go, erase, update, reset,
 	always@(posedge clk) begin
 		if (reset || !resetn)begin
 			colourLocX<= 9'd0;//x location to be coloured
-			colourLocY<= 9'd184;//ylocation to be coloured
+			colourLocY<= 9'd181;//ylocation to be coloured
 			xAnchor <= 9'd0;
-			yAnchor <= 9'd184;
+			yAnchor <= 9'd181;
 			CounterA<= 0;
 			CounterX<= 9'b0;
 			CounterY <= 9'b0;
