@@ -270,11 +270,11 @@ module control(input clk, resetn,
 
 
 	always@(*)begin: enable_signals
-		go = 1'b0;
-		update = 1'b0;
-		reset = 1'b0;
-		erase = 1'b0;
-		plot_en = 1'b0;
+		go = 1'b0;//go=1 means to enable the vga output
+		update = 1'b0;//move the player in the desired direction
+		reset = 1'b0;//move player to initial position, reset all values
+		erase = 1'b0;//redraw the background
+		plot_en = 1'b0;//draw the player
 
 		case(current_state)
 			RESET:begin
