@@ -11,7 +11,7 @@ module visuals(CLOCK_50,
 	);
 
 	input CLOCK_50;
-	input [0:0] KEY;
+	input [1:0] KEY;
 	input [2:0] SW;
 	output			VGA_CLK;   				//	VGA Clock
 	output			VGA_HS;					//	VGA H_SYNC
@@ -55,7 +55,7 @@ module visuals(CLOCK_50,
 		defparam VGA.BITS_PER_COLOUR_CHANNEL = 3;
 		defparam VGA.BACKGROUND_IMAGE = "image.colour.mif";
 
-	datapath d(CLOCK_50, plot_en, resetn, go, erase, update, reset, /*SW[2:0],*/ x, y, colour,CounterA, counter_X, counter_Y, Frequency, colourPlayer, colourBG);
+	datapath d(CLOCK_50, plot_en, resetn, go, erase, update, reset, ~KEY[1], x, y, colour,CounterA, counter_X, counter_Y, Frequency, colourPlayer, colourBG);
 	control cc(CLOCK_50, resetn, CounterA, counter_X, counter_Y, Frequency, go, erase, update, plot_en, reset);
 	player  pl(.address(CounterA),.clock(CLOCK_50),.data(000),.wren(0),.q(colourPlayer));
 	background  bg(.address(y*320 + x),.clock(CLOCK_50),.data(000),.wren(0),.q(colourBG));
@@ -63,8 +63,7 @@ module visuals(CLOCK_50,
 endmodule
 
 
-module datapath(input clk, plot_en, resetn, go, erase, update, reset,
-		/*input [2:0] colour_in,*///left over from when this was the pixel function
+module datapath(input clk, plot_en, resetn, go, erase, update, reset, jump,
 		output reg [8:0] colourLocX,
 		output reg [8:0] colourLocY,
 		output reg [8:0] colour_out,
@@ -74,8 +73,11 @@ module datapath(input clk, plot_en, resetn, go, erase, update, reset,
 		output reg [25:0] Frequency,
 		input [8:0] colourPlayer, 
 		input [8:0] colourBG);
-
-	reg opX, opY;
+	
+	reg jumpAllow;
+	reg opX;
+	reg [1:0] opY; //00 = move up, 01 move down, 10 = dont move
+	reg [6:0] jumpHeight;
 	reg [8:0] xAnchor; //this represents the x of the bottom left corner of the moving object
 	reg [8:0] yAnchor; //this represents the y of the bottom left corner of the moving object
 	reg [5:0] CounterXColour, CounterYColour;
@@ -88,6 +90,8 @@ module datapath(input clk, plot_en, resetn, go, erase, update, reset,
 	initial CounterY = 0;
 	initial CounterXColour = 0;
 	initial CounterYColour = 0;
+	initial jumpHeight = 0;
+	initial jumpAllow = 1; //start on platform
 	
 
 
@@ -108,7 +112,8 @@ module datapath(input clk, plot_en, resetn, go, erase, update, reset,
 			CounterYColour <= 0;//this must start with zero becasue on the first clock tick, 1 gets added to them, making their effective start value zero
 										//neg one above also fixes the texture offset for the player caused by the extra pixel
 			opX <= 1'b0;//X operator, controlls whether x is upcounting (1) or down counting(0)
-			opY <= 1'b0;//Y operator, controlls whether y is upcounting (1) or down counting(0)
+			//opY <= 2'b00;//Y operator, controlls whether y is upcounting (1) or down counting(0)
+			//jumpHeight <= 0;
 		end
 		else begin
 			
@@ -182,8 +187,11 @@ module datapath(input clk, plot_en, resetn, go, erase, update, reset,
 				end
 			end //end of enable plt
 			
+			
+			if( jump == 1 && jumpAllow ==1) opY=00; 
 
 			if (update) begin //this is going to actually move our player
+				
 				if (xAnchor <= 9'd3) begin
 					
 					opX = 1;
@@ -191,12 +199,12 @@ module datapath(input clk, plot_en, resetn, go, erase, update, reset,
 				if ( xAnchor >= 9'd300) begin//since player is 20 wide, must start down couting 20 before end of screen (320-4)
 					opX = 0;
 				end
-				if ( yAnchor <= 9'd3) begin
-					
-					opY = 1;
-				end
-				if ( yAnchor >= 9'd200) begin//since pixel is 40 tall, must start down couting 40 before end of screen (240-4)
-					opY = 0;
+				if ( jumpHeight >= 7'd73) begin // only jump 73 px high, will have to add all the if not standing on a platform// jumpHeight >= 73 /*might have to have a jump height variable here instead of an exact number, that would make sure it downcounts after a certain jump height */
+					opY = 2'b01;
+					//jumpHeight <=0;
+				end 
+				if ( jumpAllow==1 && opY !=00) begin//the player is on a platform and not in the middle of a jump (becasue it should never stop mid jump, should only stop on thge platform at the end of the jump)
+					opY = 2'b10;
 				end
 				if (opX == 1'b1) begin	
 					colourLocX <= xAnchor + 4;
@@ -206,16 +214,25 @@ module datapath(input clk, plot_en, resetn, go, erase, update, reset,
 					colourLocX <= xAnchor-4;
 					xAnchor <= xAnchor - 4;
 				end
-				if (opY == 1'b1) begin
-					colourLocY <= yAnchor ;//+ 4;
-					yAnchor <= yAnchor ;//+ 4;
+				if (opY == 2'b01) begin //move player down on screen
+					colourLocY <= yAnchor + 4;
+					yAnchor <= yAnchor + 4;
+					jumpHeight <=0; //we are no longer moving upwards, so the ju,p height can be reset
 				end
-				if (opY == 1'b0) begin
-					colourLocY <= yAnchor ;//-4;
-					yAnchor <= yAnchor ;//- 4;
+				if (opY == 2'b00) begin //move player higher on screen
+					colourLocY <= yAnchor -4;
+					yAnchor <= yAnchor - 4;
+					jumpHeight <= jumpHeight + 4; //the higher you jump, the higher the jump height
 					
 				end
 			end //end of if(update)
+			
+			//this will tell if the player is on a platform and therefore, jump should be allowed
+			if (( ( yAnchor >= 9'd181)//on the ground
+										|| (yAnchor == 9'd140)&(xAnchor <= 0 & xAnchor <=9'd100) //the left middle platform
+										)) jumpAllow=1;
+			else jumpAllow = 0;
+			
 		end//end of reset / !resetn
 		if (erase==0 & plot_en==0)begin
 			CounterA<= 0; 
