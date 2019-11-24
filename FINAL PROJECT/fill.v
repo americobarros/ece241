@@ -67,8 +67,8 @@ module visuals(CLOCK_50,
 	control cc(CLOCK_50, resetn, CounterA, counter_X, counter_Y, Frequency, xAnchor, yAnchor, go, erase, update, plot_en, reset, win);
 	player  pl(.address(CounterA),.clock(CLOCK_50),.data(000),.wren(0),.q(colourPlayer));//should have been rom instead of ram...
 	background  bg(.address(y*320 + x),.clock(CLOCK_50),.data(000),.wren(0),.q(colourBG));
-	background  bg2(.address(y*320 + x),.clock(CLOCK_50),.data(000),.wren(0),.q(colourWIN));//change this to the win screen module
-	clock_counter cc1(.rate(01), .clk(CLOCK_50), .enable(!win), .reset(!resetn), .segments({HEX5[6:0],HEX4[6:0],HEX3[6:0],HEX2[6:0],HEX1[6:0],HEX0[6:0]}));
+	gameOver  bg2(.address(y*320 + x),.clock(CLOCK_50),.q(colourWIN));//change this to the win screen module
+	clock_counter cc1(.rate(00), .clk(CLOCK_50), .enable(!win), .reset(!resetn), .segments({HEX5[6:0],HEX4[6:0],HEX3[6:0],HEX2[6:0],HEX1[6:0],HEX0[6:0]}));
 
 endmodule
 
@@ -137,6 +137,12 @@ module datapath(input clk, plot_en, resetn, go, erase, update, reset, jump, win,
 					CounterX <= 9'b0;											//line closer to the bottom, and reset the erase cursor to the left
 					CounterY <= CounterY +1;
 				end
+				if (CounterX == 9'd319 && CounterY== 9'd239) begin //if you get to the end of the right of the screen, but youre not at the bottom, move one
+					CounterX <= 9'b0;											//line closer to the bottom, and reset the erase cursor to the left
+					CounterY <= 9'b0;
+					colourLocX<= 0;
+					colourLocY<= 0;
+				end
 
 				else begin
 					CounterX <= CounterX+1;
@@ -161,7 +167,7 @@ module datapath(input clk, plot_en, resetn, go, erase, update, reset, jump, win,
 				 
 			end //end of erase & !plot_en
 			
-			if (!erase) colour_out <= 9'b000010010; //there is a moment where colour out is not assigned a colour, this fixes that problem
+			if (!erase & !win) colour_out <= 9'b000010010; //there is a moment where colour out is not assigned a colour, this fixes that problem
 			
 			if (Frequency == 26'd3255731) Frequency <= 26'd0;//this is how often our pixel will be updated, calculated with 50000000/60*4-(802+240x340)
 			else Frequency<= Frequency +1;
@@ -276,7 +282,7 @@ module datapath(input clk, plot_en, resetn, go, erase, update, reset, jump, win,
 			
 			
 		end//end of reset / !resetn
-		if (erase==0 & plot_en==0)begin
+		if (erase==0 && plot_en==0 && win == 0)begin
 			CounterA<= 0; 
 			colourLocX<=xAnchor;
 			colourLocY<=yAnchor;
@@ -324,11 +330,14 @@ module control(input clk, resetn,
 				else next_state= UPDATE;
 			end
 			UPDATE:begin
-				if ((yAnchor <= 9'd13 & yAnchor >= 9'd10)&(xAnchor >= 133 & xAnchor <=9'd167)) next_state = ENDGAME;
+				if ((yAnchor <= 9'd13 & yAnchor >= 9'd10)&(xAnchor >= 133 & xAnchor <=9'd187)) next_state = ENDGAME;
 				else next_state = DRAW;
 			end
 			CLEAR: next_state = (CounterX == 10'd320 & CounterY == 10'd240) ? RESET : CLEAR;//when youre erasing the whole screen, wait until you get to the end to reset
-			ENDGAME: next_state = ENDGAME;
+			ENDGAME:begin
+				//if ((CounterX < 9'd320) | (CounterY < 9'd240)) 
+				next_state = ENDGAME;
+			end
 			default: next_state = RESET;
 		endcase
 	end//end of always @
@@ -364,6 +373,7 @@ module control(input clk, resetn,
 			end
 			ENDGAME: begin
 				win = 1'b1;
+				go = 1'b1;
 			end
 			default: begin
 				go = 1'b0;
@@ -436,7 +446,7 @@ module clock_counter (input [1:0] rate,
 	
 	always @ (*) begin//posedge CLOCK_50) begin
 		case (rate[1:0])
-			2'b00:	w0 <= 28'b0000000000000000000000000000;
+			2'b00:	w0 <= 4999999;
 			2'b01:	w0 <= 24999999;
 			2'b10:	w0 <= 49999999; 
 			2'b11:	w0 <= 99999999; 
