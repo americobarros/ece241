@@ -38,7 +38,7 @@
 
 set_global_assignment -name FAMILY "Cyclone V"
 set_global_assignment -name DEVICE 5CSEMA5F31C6
-set_global_assignment -name TOP_LEVEL_ENTITY visuals
+set_global_assignment -name TOP_LEVEL_ENTITY game
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "20:27:42  NOVEMBER 14, 2019"
 set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Lite Edition"
@@ -687,13 +687,25 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HPS_USB_DATA[7] -ent
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HPS_USB_DIR -entity DE1_SoC
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HPS_USB_NXT -entity DE1_SoC
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HPS_USB_STP -entity DE1_SoC
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name VERILOG_FILE game.v
+set_global_assignment -name QIP_FILE audio/soundrom.qip
+set_global_assignment -name VERILOG_FILE audio/I2C_Controller.v
+set_global_assignment -name VERILOG_FILE audio/DE1_SoC_Audio_Example.v
+set_global_assignment -name VERILOG_FILE audio/avconf.v
+set_global_assignment -name VERILOG_FILE audio/Audio_Controller.v
+set_global_assignment -name VERILOG_FILE audio/Audio_Clock.v
+set_global_assignment -name VERILOG_FILE audio/Altera_UP_SYNC_FIFO.v
+set_global_assignment -name VERILOG_FILE audio/Altera_UP_Clock_Edge.v
+set_global_assignment -name VERILOG_FILE audio/Altera_UP_Audio_Out_Serializer.v
+set_global_assignment -name VERILOG_FILE audio/Altera_UP_Audio_In_Deserializer.v
+set_global_assignment -name VERILOG_FILE audio/Altera_UP_Audio_Bit_Counter.v
 set_global_assignment -name QIP_FILE images/player.qip
 set_global_assignment -name QIP_FILE images/gameOver.qip
 set_global_assignment -name QIP_FILE images/background.qip
@@ -701,5 +713,4 @@ set_global_assignment -name VERILOG_FILE vga_adapter/vga_pll.v
 set_global_assignment -name VERILOG_FILE vga_adapter/vga_controller.v
 set_global_assignment -name VERILOG_FILE vga_adapter/vga_address_translator.v
 set_global_assignment -name VERILOG_FILE vga_adapter/vga_adapter.v
-set_global_assignment -name VERILOG_FILE fill.v
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

@@ -1,4 +1,4 @@
-module visuals(CLOCK_50, 
+module game(CLOCK_50, 
 	SW, KEY, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, //my inputs
 	VGA_CLK,   						//	VGA Clock
 	VGA_HS,							//	VGA H_SYNC
