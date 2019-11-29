@@ -1,5 +1,22 @@
 module game(CLOCK_50, 
-	SW, KEY, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, //my inputs
+	KEY, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, //my inputs
+	
+	//Audio inputs
+		AUD_ADCDAT,
+
+		// Bidirectionals
+		AUD_BCLK,
+		AUD_ADCLRCK,
+		AUD_DACLRCK,
+
+		FPGA_I2C_SDAT,
+
+		// Outputs
+		AUD_XCK,
+		AUD_DACDAT,
+
+		FPGA_I2C_SCLK,
+	//End of Audio inputs
 	VGA_CLK,   						//	VGA Clock
 	VGA_HS,							//	VGA H_SYNC
 	VGA_VS,							//	VGA V_SYNC
@@ -12,7 +29,6 @@ module game(CLOCK_50,
 
 	input CLOCK_50;
 	input [1:0] KEY;
-	input [2:0] SW;
 	output[6:0] HEX0;
 	output [6:0] HEX1;
 	output [6:0] HEX2;
@@ -28,6 +44,7 @@ module game(CLOCK_50,
 	output	[7:0]	VGA_G;	 				//	VGA Green[7:0]
 	output	[7:0]	VGA_B;   				//	VGA Blue[7:0]
 	
+	wire [6:0] jumpHeight;
 	wire [9:0] CounterA;
 	wire [8:0] counter_X;
 	wire [8:0] counter_Y;
@@ -37,7 +54,25 @@ module game(CLOCK_50,
 	wire [8:0] y;
 	wire [8:0] yAnchor;
 	wire [8:0] xAnchor;
-	wire go, erase, update, resetn,plot_en, reset, win, transparent, runTimer; //plot
+	wire go, erase, update, resetn,plot_en, reset, win, transparent, runTimer, jump; //plot
+	
+	
+	//Audio input instatiations
+		input				AUD_ADCDAT;
+
+		// Bidirectionals
+		inout				AUD_BCLK;
+		inout				AUD_ADCLRCK;
+		inout				AUD_DACLRCK;
+
+		inout				FPGA_I2C_SDAT;
+
+		// Outputs
+		output			AUD_XCK;
+		output			AUD_DACDAT;
+
+		output			FPGA_I2C_SCLK;
+	//End of Audio instantiations
 
 	assign resetn= KEY[0];
 
@@ -62,12 +97,45 @@ module game(CLOCK_50,
 		defparam VGA.MONOCHROME = "FALSE";
 		defparam VGA.BITS_PER_COLOUR_CHANNEL = 3;
 		defparam VGA.BACKGROUND_IMAGE = "image.colour.mif";
+	
+	//------*------//
+	// SUB MODULES //
+	//------*------//
+	
+	//Audio Input
+	audio a(
+		// Inputs
+		.CLOCK_50(CLOCK_50),
 
-	datapath d(CLOCK_50, plot_en, resetn, go, erase, update, reset, ~KEY[1], win, x, y, colour,CounterA, counter_X, counter_Y, Frequency, xAnchor, yAnchor, colourPlayer, colourBG, colourWIN, transparent, runTimer);
+		.AUD_ADCDAT(AUD_ADCDAT),
+
+		// Bidirectionals
+		.AUD_BCLK(AUD_BCLK),
+		.AUD_ADCLRCK(AUD_ADCLRCK),
+		.AUD_DACLRCK(AUD_DACLRCK),
+
+		.FPGA_I2C_SDAT(FPGA_I2C_SDAT),
+
+		// Outputs
+		.AUD_XCK(AUD_XCK),
+		.AUD_DACDAT(AUD_DACDAT),
+
+		.FPGA_I2C_SCLK(FPGA_I2C_SCLK),
+		.jumpenable(jumpHeight),
+		.jumpOUT(jump),
+		.reset(reset)
+	);
+	
+	//GameLogic
+	datapath d(CLOCK_50, plot_en, resetn, go, erase, update, reset, jump, win, x, y, colour,CounterA, counter_X, counter_Y, Frequency, xAnchor, yAnchor, colourPlayer, colourBG, colourWIN, transparent, runTimer, jumpHeight);
 	control cc(CLOCK_50, resetn, CounterA, counter_X, counter_Y, Frequency, xAnchor, yAnchor, go, erase, update, plot_en, reset, win);
+	
+	//Images
 	player  pl(.address(CounterA),.clock(CLOCK_50),.data(000),.wren(0),.q(colourPlayer));//should have been rom instead of ram...
 	background  bg(.address(y*320 + x),.clock(CLOCK_50),.data(000),.wren(0),.q(colourBG));
 	gameOver  bg2(.address(y*320 + x),.clock(CLOCK_50),.q(colourWIN));//change this to the win screen module
+	
+	//Hex Screens
 	clock_counter cc1(.rate(00), .clk(CLOCK_50), .enable(!win), .reset(!resetn), .segments({HEX5[6:0],HEX4[6:0],HEX3[6:0],HEX2[6:0],HEX1[6:0],HEX0[6:0]}));
 
 endmodule
@@ -86,12 +154,12 @@ module datapath(input clk, plot_en, resetn, go, erase, update, reset, jump, win,
 		input [8:0] colourPlayer, 
 		input [8:0] colourBG,
 		input [8:0] colourWIN,
-		output reg transparent, runTimer);
+		output reg transparent, runTimer,
+		output reg [6:0] jumpHeight);
 	
 	reg jumpAllow;
 	reg opX;
 	reg [1:0] opY; //00 = move up, 01 move down, 10 = dont move
-	reg [6:0] jumpHeight;
 	reg [5:0] CounterXColour, CounterYColour;
 	reg [9:0] CounterADelayer; //this will be one numebr ahead counter A
 	initial CounterADelayer = 0;
