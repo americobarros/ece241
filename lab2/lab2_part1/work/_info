@@ -1,0 +1,50 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/users/Americo/Documents/Quartus/lab2
+vmux
+Z0 !s110 1569462463
+!i10b 1
+!s100 gdITfj5:eEbOamVHI^l6`0
+I:<b9oefGFn[?hASbTSWH:3
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dC:/Users/Americo/Documents/Quartus/lab2
+Z3 w1569459736
+Z4 8mux.v
+Z5 Fmux.v
+L0 8
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1569462463.000000
+Z8 !s107 mux.v|
+Z9 !s90 -reportprogress|300|mux.v|
+!i113 1
+Z10 tCvgOpt 0
+vmux2to1
+R0
+!i10b 1
+!s100 afChEB93:g=CUEd@;WQjS2
+I=F?kSLR6zRa1[@IoCQG<60
+R1
+R2
+R3
+R4
+R5
+L0 20
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10

@@ -1,0 +1,36 @@
+|mux6to1
+SW[0] => Input[0].IN1
+SW[1] => Input[1].IN1
+SW[2] => Input[2].IN1
+SW[3] => Input[3].IN1
+SW[4] => Input[4].IN1
+SW[5] => Input[5].IN1
+SW[6] => ~NO_FANOUT~
+SW[7] => MuxSelect[0].IN1
+SW[8] => MuxSelect[1].IN1
+SW[9] => MuxSelect[2].IN1
+LEDR[0] <= muxLogic:MuxLogic.wireOut
+LEDR[1] <= <GND>
+LEDR[2] <= <GND>
+LEDR[3] <= <GND>
+LEDR[4] <= <GND>
+LEDR[5] <= <GND>
+LEDR[6] <= <GND>
+LEDR[7] <= <GND>
+LEDR[8] <= <GND>
+LEDR[9] <= <GND>
+
+
+|mux6to1|muxLogic:MuxLogic
+MuxSelect[0] => Mux0.IN4
+MuxSelect[1] => Mux0.IN3
+MuxSelect[2] => Mux0.IN2
+Input[0] => Mux0.IN10
+Input[1] => Mux0.IN9
+Input[2] => Mux0.IN8
+Input[3] => Mux0.IN7
+Input[4] => Mux0.IN6
+Input[5] => Mux0.IN5
+wireOut <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+
+

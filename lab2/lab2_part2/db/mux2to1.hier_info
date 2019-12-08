@@ -1,0 +1,68 @@
+|mux2to1
+SW[0] => SW[0].IN1
+SW[1] => SW[1].IN1
+SW[2] => ~NO_FANOUT~
+SW[3] => ~NO_FANOUT~
+SW[4] => ~NO_FANOUT~
+SW[5] => ~NO_FANOUT~
+SW[6] => ~NO_FANOUT~
+SW[7] => ~NO_FANOUT~
+SW[8] => ~NO_FANOUT~
+SW[9] => SW[9].IN2
+LEDR[0] <= or_2:u3.pin3
+LEDR[1] <= <GND>
+LEDR[2] <= <GND>
+LEDR[3] <= <GND>
+LEDR[4] <= <GND>
+LEDR[5] <= <GND>
+LEDR[6] <= <GND>
+LEDR[7] <= <GND>
+LEDR[8] <= <GND>
+LEDR[9] <= <GND>
+
+
+|mux2to1|inverter:u1
+pin1 => pin2.DATAIN
+pin3 => pin4.DATAIN
+pin5 => pin6.DATAIN
+pin8 => pin9.DATAIN
+pin10 => pin11.DATAIN
+pin12 => pin13.DATAIN
+pin2 <= pin1.DB_MAX_OUTPUT_PORT_TYPE
+pin4 <= pin3.DB_MAX_OUTPUT_PORT_TYPE
+pin6 <= pin5.DB_MAX_OUTPUT_PORT_TYPE
+pin9 <= pin8.DB_MAX_OUTPUT_PORT_TYPE
+pin11 <= pin10.DB_MAX_OUTPUT_PORT_TYPE
+pin13 <= pin12.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mux2to1|and_2:u2
+pin1 => pin3.IN0
+pin2 => pin3.IN1
+pin4 => pin6.IN0
+pin5 => pin6.IN1
+pin9 => pin8.IN0
+pin10 => pin8.IN1
+pin12 => pin11.IN0
+pin13 => pin11.IN1
+pin3 <= pin3.DB_MAX_OUTPUT_PORT_TYPE
+pin6 <= pin6.DB_MAX_OUTPUT_PORT_TYPE
+pin8 <= pin8.DB_MAX_OUTPUT_PORT_TYPE
+pin11 <= pin11.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mux2to1|or_2:u3
+pin1 => pin3.IN0
+pin2 => pin3.IN1
+pin4 => pin6.IN0
+pin5 => pin6.IN1
+pin10 => pin8.IN0
+pin9 => pin8.IN1
+pin12 => pin11.IN0
+pin13 => pin11.IN1
+pin3 <= pin3.DB_MAX_OUTPUT_PORT_TYPE
+pin6 <= pin6.DB_MAX_OUTPUT_PORT_TYPE
+pin8 <= pin8.DB_MAX_OUTPUT_PORT_TYPE
+pin11 <= pin11.DB_MAX_OUTPUT_PORT_TYPE
+
+

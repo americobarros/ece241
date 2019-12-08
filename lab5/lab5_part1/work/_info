@@ -1,0 +1,239 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/Americo/Documents/Quartus/lab5_part1
+vbitsToHex
+Z1 !s110 1571537143
+!i10b 1
+!s100 8eKjHfnFLInU5JBD4a^PH1
+I?6ZC_oIB>3HH9@EzK1BkR1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1571536677
+Z4 8counter8bit_main.v
+Z5 Fcounter8bit_main.v
+L0 84
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1571537143.000000
+Z8 !s107 counter8bit_main.v|
+Z9 !s90 -reportprogress|300|counter8bit_main.v|
+!i113 1
+Z10 tCvgOpt 0
+nbits@to@hex
+vcounter8bit
+R1
+!i10b 1
+!s100 [oT@ACahCkAfB5f8]eXkl3
+I29L4l^o87?;z]W>=B=B5f0
+R2
+R0
+R3
+R4
+R5
+L0 12
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+vcounter8bit_main
+R1
+!i10b 1
+!s100 ZAc1To9BUBhR;C?MVHK0o0
+IhcUFX;7FGK@9[`ai86BMl0
+R2
+R0
+R3
+R4
+R5
+L0 40
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+vEQ1seg0
+R1
+!i10b 1
+!s100 OkSHP;d:>n8@_dJLX6_FD2
+Idj9OUJM`]cV[K0Ei^ALXT1
+R2
+R0
+R3
+R4
+R5
+L0 56
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@e@q1seg0
+vEQ2seg1
+R1
+!i10b 1
+!s100 CJEQ3]>WXnmzd4DA=8^2`2
+I>fz9ZD9dkd22kBDCba82C3
+R2
+R0
+R3
+R4
+R5
+L0 60
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@e@q2seg1
+vEQ3seg2
+R1
+!i10b 1
+!s100 <kkEG5=IQz<:;gbLG2_SL0
+IMe^;g<DL6Be[HE?_:8F>V3
+R2
+R0
+R3
+R4
+R5
+L0 64
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@e@q3seg2
+vEQ4seg3
+R1
+!i10b 1
+!s100 3Wk<o:BJ<kRVGnVV4RP^Z2
+IfknC<[J`Jf@L]c;UmYW7Y0
+R2
+R0
+R3
+R4
+R5
+L0 68
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@e@q4seg3
+vEQ5seg4
+R1
+!i10b 1
+!s100 Z@n]mOOOng>jWH=jgSGEP0
+Ic4]MA1;7gj6i^Ho8N9F0K3
+R2
+R0
+R3
+R4
+R5
+L0 72
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@e@q5seg4
+vEQ6seg5
+R1
+!i10b 1
+!s100 =ZU_MBYGc;ozJYDDS;mm10
+IdGkK<hPC9oBAHTf4NT;bJ1
+R2
+R0
+R3
+R4
+R5
+L0 76
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@e@q6seg5
+vEQ7seg6
+R1
+!i10b 1
+!s100 zj[8=kD`_Rz3AWH`7MP?V2
+I=`bo`Z7;fjozQSI6IBVnE1
+R2
+R0
+R3
+R4
+R5
+L0 80
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@e@q7seg6
+vTFF_
+R1
+!i10b 1
+!s100 L<^95o3:8<81dKLnU^e^j3
+IE@nSDA[ozLTM0VcK?Yk5k2
+R2
+R0
+R3
+R4
+R5
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@t@f@f_

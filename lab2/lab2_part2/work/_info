@@ -1,0 +1,90 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/Americo/Documents/Quartus/lab2/lab2_part2
+vand_2
+Z1 !s110 1569546218
+!i10b 1
+!s100 <TdQPST3lI1VC9o3_f>7j3
+I4WKjh>9`hHa<9D8L@XNOD2
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1569544160
+Z4 8mux2to1.V
+Z5 Fmux2to1.V
+L0 1
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1569546218.000000
+Z8 !s107 mux2to1.V|
+Z9 !s90 -reportprogress|300|mux2to1.V|
+!i113 1
+Z10 tCvgOpt 0
+vinverter
+R1
+!i10b 1
+!s100 bW4zoF:VomHQ^GfCiT]^X0
+ILLL;PIAXfhG>JQ@;OE:=M3
+R2
+R0
+R3
+R4
+R5
+L0 18
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+vmux2to1
+R1
+!i10b 1
+!s100 YzM`XQTGCZc^Om=_oBf4h0
+IbzAkUIJYOohY4?h^od:0f0
+R2
+R0
+R3
+R4
+R5
+L0 28
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+vor_2
+R1
+!i10b 1
+!s100 3JQWWLYh[gL8n0h?=NNA?2
+IMTBNk0W_eInPAc^TS7FV71
+R2
+R0
+R3
+R4
+R5
+L0 10
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10

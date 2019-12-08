@@ -1,0 +1,3 @@
+module mux6to1(SW, LEDR);
+			input SW[9:0];
+			output LEDR[0]

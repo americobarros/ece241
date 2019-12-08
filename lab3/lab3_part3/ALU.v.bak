@@ -1,0 +1,64 @@
+#The following will add the bits 
+
+module FA(a, b, Cin, s, Cout);
+	input a, b, Cin;
+	output s, Cout;
+	assign s = Cin^b^a;
+	assign Cout = (a&b)|(Cin&b)|(Cin&a);
+endmodule
+
+module ripple_carry_adder(bitsIN, bitsOUT);
+	input [9:0] bitsIN;
+	output [9:0] bitsOUT;
+	wire C1, C2, C3;
+	
+	FA FA0(bitsIN[7], bitsIN[3], bitsIN[8], bitsOUT[0], C1);
+	FA FA1(bitsIN[6], bitsIN[2], C1, bitsOUT[1], C2);
+	FA FA2(bitsIN[5], bitsIN[1], C2, bitsOUT[2], C3);
+	FA FA3(bitsIN[4], bitsIN[0], C3, bitsOUT[3], bitsOUT[9]);
+endmodule
+
+
+
+
+#The following is to control the hex displays
+
+module EQ1seg0 (input c1, c2, c3, c0, output o);
+	assign o = (~c3 & ~c2 & ~c1 & c0)|(~c3 & c2 & ~c1 & ~c0)|(c3 & ~c2 & c1 & c0)|(c3 & c2 & ~c1 & c0);
+endmodule
+
+module EQ2seg1 (input c3, c2, c1, c0, output o);
+	assign o = (~c3 & c2 & ~c1 & c0)|(~c3 & c2 & c1 & ~c0)|(c3 & ~c2 & c1 & c0)|(c3 & c2 & ~c1 & ~c0)|(c3 & c2 & c1 & ~c0)|(c3 & c2 & c1 & c0);
+endmodule
+
+module EQ3seg2 (input c3, c2, c1, c0, output o);
+	assign o = (~c3 & ~c2 & c1 & ~c0)|(c3 & c2 & ~c1 & ~c0)|(c3 & c2 & c1 & ~c0)|(c3 & c2 & c1 & c0);
+endmodule
+
+module EQ4seg3 (input c3, c2, c1, c0, output o);
+	assign o = (~c3 & ~c2 & ~c1 & c0)|(~c3 & c2 & ~c1 & ~c0)|(~c3 & c2 & c1 & c0)|(c3 & ~c2 & ~c1 & c0)|(c3 & ~c2 & c1 & ~c0)|(c3 & c2 & c1 & c0);
+endmodule
+
+module EQ5seg4 (input c3, c2, c1, c0, output o);
+	assign o = (~c3 & ~c2 & ~c1 & c0)|(~c3 & ~c2 & c1 & c0)|(~c3 & c2 & ~c1 & ~c0)|(~c3 & c2 & ~c1 & c0)|(~c3 & c2 & c1 & c0)|(c3 & ~c2 & ~c1 & c0);
+endmodule
+
+module EQ6seg5 (input c3, c2, c1, c0, output o);
+	assign o = (~c3 & ~c2 & ~c1 & c0)|(~c3 & ~c2 & c1 & ~c0)|(~c3 & ~c2 & c1 & c0)|(~c3 & c2 & c1 & c0)|(c3 & c2 & ~c1 & c0);
+endmodule
+
+module EQ7seg6 (input c3, c2, c1, c0, output o);
+	assign o = (~c3 & ~c2 & ~c1 & ~c0)|(~c3 & ~c2 & ~c1 & c0)|(~c3 & c2 & c1 & c0)|(c3 & c2 & ~c1 & ~c0);
+endmodule
+
+module bitsToHex (hexIN, hexOUT);
+	input [3:0] hexIN;
+	output [6:0] hexOUT;
+	EQ1seg0 eq1 (.c0(hexIN[0]), .c1(hexIN[1]), .c2(hexIN[2]), .c3(hexIN[3]), .o(hexOUT[0]));
+	EQ2seg1 eq2 (.c0(hexIN[0]), .c1(hexIN[1]), .c2(hexIN[2]), .c3(hexIN[3]), .o(hexOUT[1]));
+	EQ3seg2 eq3 (.c0(hexIN[0]), .c1(hexIN[1]), .c2(hexIN[2]), .c3(hexIN[3]), .o(hexOUT[2]));
+	EQ4seg3 eq4 (.c0(hexIN[0]), .c1(hexIN[1]), .c2(hexIN[2]), .c3(hexIN[3]), .o(hexOUT[3]));
+	EQ5seg4 eq5 (.c0(hexIN[0]), .c1(hexIN[1]), .c2(hexIN[2]), .c3(hexIN[3]), .o(hexOUT[4]));
+	EQ6seg5 eq6 (.c0(hexIN[0]), .c1(hexIN[1]), .c2(hexIN[2]), .c3(hexIN[3]), .o(hexOUT[5]));
+	EQ7seg6 eq7 (.c0(hexIN[0]), .c1(hexIN[1]), .c2(hexIN[2]), .c3(hexIN[3]), .o(hexOUT[6]));
+endmodule

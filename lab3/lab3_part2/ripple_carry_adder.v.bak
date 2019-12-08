@@ -1,0 +1,15 @@
+module FA(a, b, Cin, S, Cout);
+	input a, b, Cin;
+	output s, Cout;
+	assign s = Cin^b^a
+	assign Cout = (a+b)|(Cin&b)|(Cin&a);
+endmodule
+
+module ripple_carry_adder(SW, LEDR);
+	input [9:0] SW;
+	output [9:0] LEDR;
+	wire C1, C2, C3;
+	
+	FA FA0(SW[7], SW[3], SW[8], LEDR[0], C1);
+	endmodule
+	

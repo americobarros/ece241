@@ -1,0 +1,79 @@
+|ripple_carry_adder
+SW[0] => SW[0].IN1
+SW[1] => SW[1].IN1
+SW[2] => SW[2].IN1
+SW[3] => SW[3].IN1
+SW[4] => SW[4].IN1
+SW[5] => SW[5].IN1
+SW[6] => SW[6].IN1
+SW[7] => SW[7].IN1
+SW[8] => SW[8].IN1
+SW[9] => ~NO_FANOUT~
+LEDR[0] << FA:FA0.port3
+LEDR[1] << FA:FA1.port3
+LEDR[2] << FA:FA2.port3
+LEDR[3] << FA:FA3.port3
+LEDR[4] << <GND>
+LEDR[5] << <GND>
+LEDR[6] << <GND>
+LEDR[7] << <GND>
+LEDR[8] << <GND>
+LEDR[9] << FA:FA3.port4
+
+
+|ripple_carry_adder|FA:FA0
+a => s.IN1
+a => Cout.IN0
+a => Cout.IN0
+b => s.IN0
+b => Cout.IN1
+b => Cout.IN0
+Cin => s.IN1
+Cin => Cout.IN1
+Cin => Cout.IN1
+s <= s.DB_MAX_OUTPUT_PORT_TYPE
+Cout <= Cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ripple_carry_adder|FA:FA1
+a => s.IN1
+a => Cout.IN0
+a => Cout.IN0
+b => s.IN0
+b => Cout.IN1
+b => Cout.IN0
+Cin => s.IN1
+Cin => Cout.IN1
+Cin => Cout.IN1
+s <= s.DB_MAX_OUTPUT_PORT_TYPE
+Cout <= Cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ripple_carry_adder|FA:FA2
+a => s.IN1
+a => Cout.IN0
+a => Cout.IN0
+b => s.IN0
+b => Cout.IN1
+b => Cout.IN0
+Cin => s.IN1
+Cin => Cout.IN1
+Cin => Cout.IN1
+s <= s.DB_MAX_OUTPUT_PORT_TYPE
+Cout <= Cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ripple_carry_adder|FA:FA3
+a => s.IN1
+a => Cout.IN0
+a => Cout.IN0
+b => s.IN0
+b => Cout.IN1
+b => Cout.IN0
+Cin => s.IN1
+Cin => Cout.IN1
+Cin => Cout.IN1
+s <= s.DB_MAX_OUTPUT_PORT_TYPE
+Cout <= Cout.DB_MAX_OUTPUT_PORT_TYPE
+
+

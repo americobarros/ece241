@@ -1,0 +1,17 @@
+Analysis & Synthesis Status : Successful - Fri Nov 08 01:13:55 2019
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : poly_function
+Top-level Entity Name : fpga_top
+Family : Cyclone V
+Logic utilization (in ALMs) : N/A
+Total registers : 53
+Total pins : 39
+Total virtual pins : 0
+Total block memory bits : 0
+Total DSP Blocks : 1
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 0
+Total DLLs : 0

@@ -1,0 +1,240 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/Americo/Documents/Quartus/lab5_part2
+vbitsToHex
+Z1 !s110 1571599196
+!i10b 1
+!s100 iN0:IRnF^jfz1MTfiMQea0
+Ij1L6jNLaK=czKBOeX;QnH2
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1571599190
+Z4 8clock_counter.v
+Z5 Fclock_counter.v
+L0 85
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1571599196.000000
+Z8 !s107 clock_counter.v|
+Z9 !s90 -reportprogress|300|clock_counter.v|
+!i113 1
+Z10 tCvgOpt 0
+nbits@to@hex
+vclock_counter
+R1
+!i10b 1
+!s100 >H=K@VOf7=7V8JFCA8B0U0
+IP8L`6_SDbg^Kz3aj]:Omd1
+R2
+R0
+R3
+R4
+R5
+L0 28
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+vDisplayCounter
+R1
+!i10b 1
+!s100 ?n9eOG;n5oNn@TLBlZL3@3
+IEYfaQLAEmk@@V6AN19lda2
+R2
+R0
+R3
+R4
+R5
+L0 16
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@display@counter
+vEQ1seg0
+R1
+!i10b 1
+!s100 Zn[gc0l2j8HV^AN@m7NW11
+I`=:jYTfVBfYU<[HN9Ad1b3
+R2
+R0
+R3
+R4
+R5
+L0 57
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@e@q1seg0
+vEQ2seg1
+R1
+!i10b 1
+!s100 >`@nJ]Oh@3V1<z[:knT0O2
+IZSHP@SLo3lE>J;6KePZn]0
+R2
+R0
+R3
+R4
+R5
+L0 61
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@e@q2seg1
+vEQ3seg2
+R1
+!i10b 1
+!s100 deFz54WiKQCT^TTOU0F`N3
+IhjcoahCjfe5n@]WQ:;5Q;2
+R2
+R0
+R3
+R4
+R5
+L0 65
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@e@q3seg2
+vEQ4seg3
+R1
+!i10b 1
+!s100 Wo@cNbL[HK7k`1JI9fzgj3
+I`U7QA[MbA9d7[GRQdla4n3
+R2
+R0
+R3
+R4
+R5
+L0 69
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@e@q4seg3
+vEQ5seg4
+R1
+!i10b 1
+!s100 SJ=lYeb5h[QSO0N[XhXYz3
+IVA?zFc^79BY@BadPfD4DN1
+R2
+R0
+R3
+R4
+R5
+L0 73
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@e@q5seg4
+vEQ6seg5
+R1
+!i10b 1
+!s100 jk2LK38SS6clLEiBbH3O42
+In6FU15mPN>3a9l8Woe;;H3
+R2
+R0
+R3
+R4
+R5
+L0 77
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@e@q6seg5
+vEQ7seg6
+R1
+!i10b 1
+!s100 RSYmZz]=[V7:X8XAnb3Pa2
+INgnQQz9S:TPBn?0nj@5SF0
+R2
+R0
+R3
+R4
+R5
+L0 81
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@e@q7seg6
+vRateDivider
+R1
+!i10b 1
+!s100 :SeaW`BHAKNe^Ojg_M8VY3
+I7P3bjPff^@M;Pj<[`9DPo2
+R2
+R0
+R3
+R4
+R5
+L0 2
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@rate@divider

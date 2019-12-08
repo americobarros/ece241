@@ -1,0 +1,93 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/intelFPGA_lite/18.1
+vmux
+Z1 !s110 1569461150
+!i10b 1
+!s100 gdITfj5:eEbOamVHI^l6`0
+IDb^<Y9MB2ROn?VgZj<EUV0
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1569459736
+Z4 8C:/Users/Americo/Documents/Quartus/lab2/mux.v
+Z5 FC:/Users/Americo/Documents/Quartus/lab2/mux.v
+L0 8
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1569461150.000000
+Z8 !s107 C:/Users/Americo/Documents/Quartus/lab2/mux.v|
+Z9 !s90 -reportprogress|300|-work|work|C:/Users/Americo/Documents/Quartus/lab2/mux.v|
+!i113 1
+Z10 o-work work
+Z11 tCvgOpt 0
+vmux2to1
+R1
+!i10b 1
+!s100 afChEB93:g=CUEd@;WQjS2
+IkT9cG>WT]0HR4_cZj3X6K3
+R2
+R0
+R3
+R4
+R5
+L0 20
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vmux6to1
+Z12 !s110 1570160666
+!i10b 1
+!s100 LF0?`c7dkNVYmERf46Wzi1
+IN=Dmk;WKXF4[WVo0VNbE>3
+R2
+Z13 dC:/Users/Americo/Documents/Quartus/lab3/lab3_part1
+Z14 w1570158662
+Z15 8mux6to1.v
+Z16 Fmux6to1.v
+L0 1
+R6
+r1
+!s85 0
+31
+Z17 !s108 1570160666.000000
+Z18 !s107 mux6to1.v|
+Z19 !s90 -reportprogress|300|mux6to1.v|
+!i113 1
+R11
+vmuxLogic
+R12
+!i10b 1
+!s100 BF8S0OSihoBSeQ:L?5[jJ1
+IbDzWI1E2LJLKWM1no4GLY2
+R2
+R13
+R14
+R15
+R16
+L0 13
+R6
+r1
+!s85 0
+31
+R17
+R18
+R19
+!i113 1
+R11
+nmux@logic

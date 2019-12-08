@@ -1,0 +1,282 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/Americo/Documents/Quartus/lab4
+vALU
+Z1 !s110 1570819550
+!i10b 1
+!s100 ol9IY5EWYTQ]AigD8^;YG2
+IGKz6FmW>dXlPk5j2l3nT20
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1570782510
+Z4 8ALU_Regiser.v
+Z5 FALU_Regiser.v
+L0 45
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1570819550.000000
+Z8 !s107 ALU_Regiser.v|
+Z9 !s90 -reportprogress|300|ALU_Regiser.v|
+!i113 1
+Z10 tCvgOpt 0
+n@a@l@u
+vALU_Regiser
+R1
+!i10b 1
+!s100 fV=CndGgm0gLn2i>38edg1
+I;SJ^Yb3DB8[>gH=84ZI[]2
+R2
+R0
+R3
+R4
+R5
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@a@l@u_@regiser
+vbitsToHex
+R1
+!i10b 1
+!s100 Qi0JGz>lGIbN_ER6iMXk41
+IC7zio9<W3@Ea^QfPO8j]M3
+R2
+R0
+R3
+R4
+R5
+L0 156
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+nbits@to@hex
+vEQ1seg0
+R1
+!i10b 1
+!s100 Ug2XnWdF^fKa2:Yi?KSb`0
+I5R4J[M?HfGZQ[UeAlfSo13
+R2
+R0
+R3
+R4
+R5
+L0 128
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@e@q1seg0
+vEQ2seg1
+R1
+!i10b 1
+!s100 iNK1]?PYRBGl3f]5Ub^N31
+IeJMGZ`9Hmjg@H<TH5h7GD3
+R2
+R0
+R3
+R4
+R5
+L0 132
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@e@q2seg1
+vEQ3seg2
+R1
+!i10b 1
+!s100 Q3[bZ^8h;zB<gc<9XlVIa0
+Ifg]eK41B?n9zPS8Amh?V13
+R2
+R0
+R3
+R4
+R5
+L0 136
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@e@q3seg2
+vEQ4seg3
+R1
+!i10b 1
+!s100 [WA6^1Q2;<^l?UH@YP91z3
+IWDPA^cffo[LaSoZiTUShU2
+R2
+R0
+R3
+R4
+R5
+L0 140
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@e@q4seg3
+vEQ5seg4
+R1
+!i10b 1
+!s100 kTeCz6OQRBd_JmzoIc_TL0
+IQMaTH?O?8Y^Gn`HkiC<dI2
+R2
+R0
+R3
+R4
+R5
+L0 144
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@e@q5seg4
+vEQ6seg5
+R1
+!i10b 1
+!s100 SSGXF<NTJ8LViLDeg19h13
+I2iioeBU70GG9mh^A^Zi;Z2
+R2
+R0
+R3
+R4
+R5
+L0 148
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@e@q6seg5
+vEQ7seg6
+R1
+!i10b 1
+!s100 k30a^AX>FIW6Ck@6c7Vzk0
+IbSoADS6]nYFVFBM=RZl010
+R2
+R0
+R3
+R4
+R5
+L0 152
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@e@q7seg6
+vFA
+R1
+!i10b 1
+!s100 P2LRXQ6:be]9?0lA;E3>m3
+INPT=bf^VhHfVSP:fbe^Dn2
+R2
+R0
+R3
+R4
+R5
+L0 105
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@f@a
+vRegister
+R1
+!i10b 1
+!s100 Ffj_<D0ECB[=]Z8h_]0NF1
+I;bV=NDaMPoAfm<h4;c^G`0
+R2
+R0
+R3
+R4
+R5
+L0 31
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@register
+vripple_carry_adder
+R1
+!i10b 1
+!s100 a7DnLbh]k?X124ChaC@Z]1
+IOQ]25[<jHZDESnJzzVfJT3
+R2
+R0
+R3
+R4
+R5
+L0 112
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10

@@ -1,0 +1,39 @@
+vlib work
+
+vlog SWtoHEX.v
+
+vsim SWtoHEX
+
+log{/*}
+
+add wave{/*}
+
+force {SW[0]} 0
+force {SW[0]} 0
+force {SW[0]} 0
+force {SW[0]} 0
+
+force {SW[0]} 0
+force {SW[0]} 0
+force {SW[0]} 1
+force {SW[0]} 1
+
+force {SW[0]} 0
+force {SW[0]} 1
+force {SW[0]} 1
+force {SW[0]} 0
+
+force {SW[0]} 1
+force {SW[0]} 0
+force {SW[0]} 1
+force {SW[0]} 0
+
+force {SW[0]} 1
+force {SW[0]} 1
+force {SW[0]} 0
+force {SW[0]} 1
+
+force {SW[0]} 1
+force {SW[0]} 1
+force {SW[0]} 1
+force {SW[0]} 1

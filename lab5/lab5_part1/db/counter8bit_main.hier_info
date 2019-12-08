@@ -1,0 +1,403 @@
+|counter8bit_main
+SW[0] => SW[0].IN1
+SW[1] => SW[1].IN1
+SW[2] => ~NO_FANOUT~
+SW[3] => ~NO_FANOUT~
+SW[4] => ~NO_FANOUT~
+SW[5] => ~NO_FANOUT~
+SW[6] => ~NO_FANOUT~
+SW[7] => ~NO_FANOUT~
+SW[8] => ~NO_FANOUT~
+SW[9] => ~NO_FANOUT~
+KEY[0] => KEY[0].IN1
+KEY[1] => ~NO_FANOUT~
+KEY[2] => ~NO_FANOUT~
+KEY[3] => ~NO_FANOUT~
+HEX0[0] <= bitsToHex:U2.port1
+HEX0[1] <= bitsToHex:U2.port1
+HEX0[2] <= bitsToHex:U2.port1
+HEX0[3] <= bitsToHex:U2.port1
+HEX0[4] <= bitsToHex:U2.port1
+HEX0[5] <= bitsToHex:U2.port1
+HEX0[6] <= bitsToHex:U2.port1
+HEX1[0] <= bitsToHex:U3.port1
+HEX1[1] <= bitsToHex:U3.port1
+HEX1[2] <= bitsToHex:U3.port1
+HEX1[3] <= bitsToHex:U3.port1
+HEX1[4] <= bitsToHex:U3.port1
+HEX1[5] <= bitsToHex:U3.port1
+HEX1[6] <= bitsToHex:U3.port1
+
+
+|counter8bit_main|counter8bit:U1
+enable => enable.IN1
+clear_b => clear_b.IN8
+clock => clock.IN8
+out[0] <= TFF_:U1.Q
+out[1] <= TFF_:U2.Q
+out[2] <= TFF_:U3.Q
+out[3] <= TFF_:U4.Q
+out[4] <= TFF_:U5.Q
+out[5] <= TFF_:U6.Q
+out[6] <= TFF_:U7.Q
+out[7] <= TFF_:U8.Q
+
+
+|counter8bit_main|counter8bit:U1|TFF_:U1
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+Resetn => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counter8bit_main|counter8bit:U1|TFF_:U2
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+Resetn => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counter8bit_main|counter8bit:U1|TFF_:U3
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+Resetn => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counter8bit_main|counter8bit:U1|TFF_:U4
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+Resetn => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counter8bit_main|counter8bit:U1|TFF_:U5
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+Resetn => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counter8bit_main|counter8bit:U1|TFF_:U6
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+Resetn => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counter8bit_main|counter8bit:U1|TFF_:U7
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+Resetn => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counter8bit_main|counter8bit:U1|TFF_:U8
+T => Q~reg0.ENA
+clk => Q~reg0.CLK
+Resetn => Q~reg0.ACLR
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counter8bit_main|bitsToHex:U2
+hexIN[0] => hexIN[0].IN7
+hexIN[1] => hexIN[1].IN7
+hexIN[2] => hexIN[2].IN7
+hexIN[3] => hexIN[3].IN7
+hexOUT[0] <= EQ1seg0:eq1.o
+hexOUT[1] <= EQ2seg1:eq2.o
+hexOUT[2] <= EQ3seg2:eq3.o
+hexOUT[3] <= EQ4seg3:eq4.o
+hexOUT[4] <= EQ5seg4:eq5.o
+hexOUT[5] <= EQ6seg5:eq6.o
+hexOUT[6] <= EQ7seg6:eq7.o
+
+
+|counter8bit_main|bitsToHex:U2|EQ1seg0:eq1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c2 => o.IN0
+c2 => o.IN0
+c2 => o.IN0
+c2 => o.IN0
+c3 => o.IN1
+c3 => o.IN1
+c3 => o.IN1
+c3 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+o <= o.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counter8bit_main|bitsToHex:U2|EQ2seg1:eq2
+c3 => o.IN0
+c3 => o.IN0
+c3 => o.IN0
+c2 => o.IN1
+c2 => o.IN1
+c2 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+o <= o.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counter8bit_main|bitsToHex:U2|EQ3seg2:eq3
+c3 => o.IN0
+c3 => o.IN0
+c2 => o.IN1
+c2 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+o <= o.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counter8bit_main|bitsToHex:U2|EQ4seg3:eq4
+c3 => o.IN0
+c3 => o.IN0
+c3 => o.IN0
+c3 => o.IN0
+c2 => o.IN1
+c2 => o.IN1
+c2 => o.IN1
+c2 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+o <= o.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counter8bit_main|bitsToHex:U2|EQ5seg4:eq5
+c3 => o.IN0
+c3 => o.IN0
+c3 => o.IN0
+c2 => o.IN1
+c2 => o.IN1
+c2 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+o <= o.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counter8bit_main|bitsToHex:U2|EQ6seg5:eq6
+c3 => o.IN0
+c3 => o.IN0
+c3 => o.IN0
+c2 => o.IN1
+c2 => o.IN1
+c2 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+o <= o.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counter8bit_main|bitsToHex:U2|EQ7seg6:eq7
+c3 => o.IN0
+c3 => o.IN0
+c3 => o.IN0
+c2 => o.IN1
+c2 => o.IN1
+c2 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+o <= o.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counter8bit_main|bitsToHex:U3
+hexIN[0] => hexIN[0].IN7
+hexIN[1] => hexIN[1].IN7
+hexIN[2] => hexIN[2].IN7
+hexIN[3] => hexIN[3].IN7
+hexOUT[0] <= EQ1seg0:eq1.o
+hexOUT[1] <= EQ2seg1:eq2.o
+hexOUT[2] <= EQ3seg2:eq3.o
+hexOUT[3] <= EQ4seg3:eq4.o
+hexOUT[4] <= EQ5seg4:eq5.o
+hexOUT[5] <= EQ6seg5:eq6.o
+hexOUT[6] <= EQ7seg6:eq7.o
+
+
+|counter8bit_main|bitsToHex:U3|EQ1seg0:eq1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c2 => o.IN0
+c2 => o.IN0
+c2 => o.IN0
+c2 => o.IN0
+c3 => o.IN1
+c3 => o.IN1
+c3 => o.IN1
+c3 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+o <= o.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counter8bit_main|bitsToHex:U3|EQ2seg1:eq2
+c3 => o.IN0
+c3 => o.IN0
+c3 => o.IN0
+c2 => o.IN1
+c2 => o.IN1
+c2 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+o <= o.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counter8bit_main|bitsToHex:U3|EQ3seg2:eq3
+c3 => o.IN0
+c3 => o.IN0
+c2 => o.IN1
+c2 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+o <= o.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counter8bit_main|bitsToHex:U3|EQ4seg3:eq4
+c3 => o.IN0
+c3 => o.IN0
+c3 => o.IN0
+c3 => o.IN0
+c2 => o.IN1
+c2 => o.IN1
+c2 => o.IN1
+c2 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+o <= o.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counter8bit_main|bitsToHex:U3|EQ5seg4:eq5
+c3 => o.IN0
+c3 => o.IN0
+c3 => o.IN0
+c2 => o.IN1
+c2 => o.IN1
+c2 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+o <= o.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counter8bit_main|bitsToHex:U3|EQ6seg5:eq6
+c3 => o.IN0
+c3 => o.IN0
+c3 => o.IN0
+c2 => o.IN1
+c2 => o.IN1
+c2 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+o <= o.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|counter8bit_main|bitsToHex:U3|EQ7seg6:eq7
+c3 => o.IN0
+c3 => o.IN0
+c3 => o.IN0
+c2 => o.IN1
+c2 => o.IN1
+c2 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c1 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+c0 => o.IN1
+o <= o.DB_MAX_OUTPUT_PORT_TYPE
+
+
